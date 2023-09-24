@@ -13,8 +13,8 @@ header > div {
   align-items: center;
 }
 
-header > div h2{
-  margin: 0
+header > div h2 {
+  margin: 0;
 }
 
 header > div nav ul {
@@ -22,7 +22,6 @@ header > div nav ul {
   flex-direction: row;
   align-items: center;
 }
-
 
 header > div nav ul li {
   list-style: none;

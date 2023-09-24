@@ -1,5 +1,5 @@
 import TarjetaEpisodio from "../componentes/episodios/tarjeta-episodio.componente";
-import { IEpisodio } from "../componentes/episodios/tarjeta-episodios.interface";
+import { Episodio } from "../interface/tarjeta-episodios.interface";
 import "./Detalle.css";
 
 /**
@@ -15,7 +15,7 @@ import "./Detalle.css";
  * @returns la pagina de detalle
  */
 const PaginaDetalle = () => {
-  const episodio: IEpisodio = {
+  const episodio: Episodio = {
     nombre: "Juan",
     numeroDeEpisodio: "1l",
     fechaDeLanzamiento: new Date(),

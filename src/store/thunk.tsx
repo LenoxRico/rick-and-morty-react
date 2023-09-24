@@ -1,12 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
-  IAllCharacters,
-  ICharacter,
-} from "../../interface/character.interface";
+  RespuestaPersonajes,
+  Personaje,
+} from "../interface/character.interface";
 
-export const GET_CHARACTERS = createAsyncThunk(
-  "character/GET_CHARACTERS",
-  async (urlBase: string): Promise<IAllCharacters> => {
+export const OBTENER_PERSONAJE = createAsyncThunk(
+  "character/OBTENER_PERSONAJE",
+  async (urlBase: string): Promise<RespuestaPersonajes> => {
     try {
       const resp = await fetch(urlBase);
       const data = await resp.json();
@@ -23,19 +23,19 @@ export const GET_CHARACTERS = createAsyncThunk(
   }
 );
 
-export const GET_CHARACTERS_FILTER = createAsyncThunk(
-  "character/GET_CHARACTERS_FILTER",
+export const OBTENER_PERSONAJE_NOMBRE = createAsyncThunk(
+  "character/OBTENER_PERSONAJE_NOMBRE",
   async ({
     name,
   }: {
     name: string | null | undefined;
-  }): Promise<IAllCharacters> => {
+  }): Promise<RespuestaPersonajes> => {
     try {
       const resp = await fetch(
         `https://rickandmortyapi.com/api/character/?name=${name}`
       );
       const data = await resp.json();
-      const resultsCharacters: IAllCharacters = {
+      const resultsCharacters: RespuestaPersonajes = {
         allCharacters: data.results,
         nextPage: data.info.next,
         prevPage: data.info.prev,
@@ -48,9 +48,9 @@ export const GET_CHARACTERS_FILTER = createAsyncThunk(
   }
 );
 
-export const GET_CHARACTER_ID = createAsyncThunk(
-  "character/GET_CHARACTERS_ID",
-  async (id: number): Promise<ICharacter> => {
+export const OBTENER_DETALLE = createAsyncThunk(
+  "character/OBTENER_PERSONAJE_ID",
+  async (id: number): Promise<Personaje> => {
     const resp = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
     const data = await resp.json();
     return data;

@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../store";
 import "./grilla-personajes.css";
 import TarjetaPersonaje from "./tarjeta-personaje.componente";
-import { IGrillaPersonajes } from "./personajes.interface";
+import { GrillaPersonaje } from "../../interface/personajes.interface";
 
 /**
  * Grilla de personajes para la pagina de inicio
@@ -11,7 +11,7 @@ import { IGrillaPersonajes } from "./personajes.interface";
  *
  * @returns un JSX element
  */
-const GrillaPersonajes = ({ initialCharacters }: IGrillaPersonajes) => {
+const GrillaPersonajes = ({ initialCharacters }: GrillaPersonaje) => {
   const { isError, isLoading, listFavoritos } = useAppSelector(
     (state) => state.characters
   );

@@ -1,20 +1,17 @@
 import { useEffect, useRef } from "react";
 import { useAppDispatch } from "../../store";
-import {
-  GET_CHARACTERS,
-  GET_CHARACTERS_FILTER,
-} from "../../store/character/thunk";
+import { OBTENER_PERSONAJE, OBTENER_PERSONAJE_NOMBRE } from "../../store/thunk";
 import "./filtros.css";
-import { IFiltros } from "./personajes.interface";
+import { Filtro } from "../../interface/personajes.interface";
 
-const Filtros = ({ name, setName, urlBase }: IFiltros) => {
+const Filtros = ({ name, setName, urlBase }: Filtro) => {
   const ref = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
 
   const deleteFilter = () => {
     if (!ref.current) return;
     ref.current.value = "";
-    dispatch(GET_CHARACTERS(urlBase));
+    dispatch(OBTENER_PERSONAJE(urlBase));
   };
 
   const filterByName = () => {
@@ -24,7 +21,7 @@ const Filtros = ({ name, setName, urlBase }: IFiltros) => {
       ref.current.value = "";
       return;
     }
-    dispatch(GET_CHARACTERS_FILTER({ name }));
+    dispatch(OBTENER_PERSONAJE_NOMBRE({ name }));
   };
 
   useEffect(() => {
