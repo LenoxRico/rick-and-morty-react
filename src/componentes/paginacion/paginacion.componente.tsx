@@ -14,20 +14,20 @@ import { OBTENER_PERSONAJE } from "../../store/thunk";
 const Paginacion = () => {
   const dispatch = useAppDispatch();
   const { nextPage, prevPage } = useAppSelector((state) => state.characters);
-  const handelPage = (page: string) => {
+  const cambiarPagina = (page: string) => {
     dispatch(OBTENER_PERSONAJE(page));
   };
   return (
     <div className="paginacion">
       <button
-        onClick={() => handelPage(prevPage)}
+        onClick={() => cambiarPagina(prevPage)}
         disabled={!prevPage}
         className={"primary"}
       >
         Anterior
       </button>
       <button
-        onClick={() => handelPage(nextPage)}
+        onClick={() => cambiarPagina(nextPage)}
         disabled={!nextPage}
         className={"primary"}
       >

@@ -4,19 +4,19 @@ import { OBTENER_PERSONAJE, OBTENER_PERSONAJE_NOMBRE } from "../../store/thunk";
 import "./filtros.css";
 import { Filtro } from "../../interface/personajes.interface";
 
-const Filtros = ({ name, setName, urlBase }: Filtro) => {
+const Filtros = ({ name, buscarNombre, urlPrincipal }: Filtro) => {
   const ref = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
 
   const deleteFilter = () => {
     if (!ref.current) return;
     ref.current.value = "";
-    dispatch(OBTENER_PERSONAJE(urlBase));
+    dispatch(OBTENER_PERSONAJE(urlPrincipal));
   };
 
   const filterByName = () => {
     if (!ref.current) return;
-    setName(ref.current.value);
+    buscarNombre(ref.current.value);
     if (name?.trim === null) {
       ref.current.value = "";
       return;

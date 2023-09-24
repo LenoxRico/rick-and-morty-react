@@ -12,21 +12,21 @@ export const personajeSlice = createSlice({
   reducers: {
     AGREGAR_FAVORITO: (state, action: PayloadAction<Personaje>) => {
       const personaje = action.payload;
-      const esFavorito = state.listFavoritos.find(
+      const esFavorito = state.listaFavoritos.find(
         (fav) => fav.id === personaje.id
       );
       if (esFavorito) {
         esFavorito.esFavorito = false;
-        state.listFavoritos = state.listFavoritos.filter(
+        state.listaFavoritos = state.listaFavoritos.filter(
           (item) => item.id !== esFavorito.id
         );
       } else {
         personaje.esFavorito = true;
-        state.listFavoritos.push(personaje);
+        state.listaFavoritos.push(personaje);
       }
     },
     LIMPIAR_FAVORITOS: (state) => {
-      state.listFavoritos = [];
+      state.listaFavoritos = [];
     },
   },
   extraReducers: (builder) => {
@@ -36,7 +36,7 @@ export const personajeSlice = createSlice({
     builder.addCase(
       OBTENER_PERSONAJE.fulfilled,
       (state, action: PayloadAction<RespuestaPersonajes>) => {
-        state.allCharacters = action.payload.allCharacters;
+        state.respuestaPersonajes = action.payload.respuestaPersonajes;
         state.prevPage = action.payload.prevPage;
         state.nextPage = action.payload.nextPage;
         state.isLoading = false;
@@ -52,7 +52,7 @@ export const personajeSlice = createSlice({
     builder.addCase(
       OBTENER_PERSONAJE_NOMBRE.fulfilled,
       (state, action: PayloadAction<RespuestaPersonajes>) => {
-        state.allCharacters = action.payload.allCharacters;
+        state.respuestaPersonajes = action.payload.respuestaPersonajes;
         state.prevPage = action.payload.prevPage;
         state.nextPage = action.payload.nextPage;
         state.isLoading = false;

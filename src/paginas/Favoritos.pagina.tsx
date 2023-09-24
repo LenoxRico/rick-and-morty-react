@@ -14,7 +14,7 @@ import { OBTENER_PERSONAJE } from "../store/thunk";
  */
 const PaginaFavoritos = () => {
   const dispatch = useAppDispatch();
-  const { listFavoritos, urlBase } = useAppSelector(
+  const { listaFavoritos, urlPrincipal } = useAppSelector(
     (state) => state.characters
   );
 
@@ -22,7 +22,7 @@ const PaginaFavoritos = () => {
     dispatch(LIMPIAR_FAVORITOS());
   };
   useEffect(() => {
-    dispatch(OBTENER_PERSONAJE(urlBase));
+    dispatch(OBTENER_PERSONAJE(urlPrincipal));
   }, []);
 
   return (
@@ -33,7 +33,7 @@ const PaginaFavoritos = () => {
           Limpiar Favoritos
         </button>
       </div>
-      <GrillaPersonajes initialCharacters={listFavoritos} />
+      <GrillaPersonajes respuestaPersonajes={listaFavoritos} />
     </div>
   );
 };

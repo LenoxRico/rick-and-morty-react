@@ -6,12 +6,12 @@ import {
 
 export const OBTENER_PERSONAJE = createAsyncThunk(
   "character/OBTENER_PERSONAJE",
-  async (urlBase: string): Promise<RespuestaPersonajes> => {
+  async (urlPrincipal: string): Promise<RespuestaPersonajes> => {
     try {
-      const resp = await fetch(urlBase);
+      const resp = await fetch(urlPrincipal);
       const data = await resp.json();
       const resultsCharacters = {
-        allCharacters: data.results,
+        respuestaPersonajes: data.results,
         nextPage: data.info.next,
         prevPage: data.info.prev,
       };
@@ -36,7 +36,7 @@ export const OBTENER_PERSONAJE_NOMBRE = createAsyncThunk(
       );
       const data = await resp.json();
       const resultsCharacters: RespuestaPersonajes = {
-        allCharacters: data.results,
+        respuestaPersonajes: data.results,
         nextPage: data.info.next,
         prevPage: data.info.prev,
       };

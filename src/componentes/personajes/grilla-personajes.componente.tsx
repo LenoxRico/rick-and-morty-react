@@ -11,15 +11,15 @@ import { GrillaPersonaje } from "../../interface/personajes.interface";
  *
  * @returns un JSX element
  */
-const GrillaPersonajes = ({ initialCharacters }: GrillaPersonaje) => {
-  const { isError, isLoading, listFavoritos } = useAppSelector(
+const GrillaPersonajes = ({ respuestaPersonajes }: GrillaPersonaje) => {
+  const { isError, isLoading, listaFavoritos } = useAppSelector(
     (state) => state.characters
   );
   // Crea una copia de la lista de favoritos con los IDs de los personajes
-  const favoritosIds = listFavoritos.map((character) => character.id);
+  const favoritosIds = listaFavoritos.map((character) => character.id);
 
   // Mapea los personajes iniciales y establece esFavorito en true si están en la lista de favoritos
-  const charactersWithFavoritos = initialCharacters.map((character) => ({
+  const charactersWithFavoritos = respuestaPersonajes.map((character) => ({
     ...character,
     esFavorito: favoritosIds.includes(character.id),
   }));

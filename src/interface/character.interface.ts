@@ -6,27 +6,27 @@ export interface Personaje {
 }
 
 export interface RespuestaPersonajes {
-  allCharacters: Personaje[];
+  respuestaPersonajes: Personaje[];
   nextPage: string;
   prevPage: string;
 }
 
 export interface StatePersonaje {
-  urlBase: string;
-  allCharacters: Personaje[];
+  urlPrincipal: string;
+  respuestaPersonajes: Personaje[];
   isLoading: boolean;
   isError: string | null;
   nextPage: string;
   prevPage: string;
-  listFavoritos: Personaje[];
+  listaFavoritos: Personaje[];
 }
 
 export const initialState: StatePersonaje = {
-  urlBase: "https://rickandmortyapi.com/api/character/",
-  allCharacters: [],
+  urlPrincipal: "https://rickandmortyapi.com/api/character/",
+  respuestaPersonajes: [],
   isLoading: true,
   isError: null,
   prevPage: "",
   nextPage: "",
-  listFavoritos: [],
+  listaFavoritos: [],
 };

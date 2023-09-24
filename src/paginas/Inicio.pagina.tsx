@@ -14,15 +14,15 @@ import { OBTENER_PERSONAJE } from "../store/thunk";
  */
 const PaginaInicio = () => {
   const dispatch = useAppDispatch();
-  const { allCharacters, urlBase } = useAppSelector(
+  const { respuestaPersonajes, urlPrincipal } = useAppSelector(
     (state) => state.characters
   );
-  const [name, setName] = useState<string | null>("");
+  const [name, buscarNombre] = useState<string | null>("");
   const limpiarFiltro = () => {
-    setName(null);
+    buscarNombre(null);
   };
   useEffect(() => {
-    dispatch(OBTENER_PERSONAJE(urlBase));
+    dispatch(OBTENER_PERSONAJE(urlPrincipal));
   }, []);
 
   return (
@@ -33,9 +33,13 @@ const PaginaInicio = () => {
           Limpiar Filtro
         </button>
       </div>
-      <Filtros name={name} setName={setName} urlBase={urlBase} />
+      <Filtros
+        name={name}
+        buscarNombre={buscarNombre}
+        urlPrincipal={urlPrincipal}
+      />
       <Paginacion />
-      <GrillaPersonajes initialCharacters={allCharacters} />
+      <GrillaPersonajes respuestaPersonajes={respuestaPersonajes} />
       <Paginacion />
     </div>
   );
